@@ -1,0 +1,49 @@
+<template name="listClients">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>View all clients</h4>
+
+        {{#if Template.subscriptionsReady}}
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Contact Person</th>
+                <th>Client Type</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Phone Contact</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each clients}}
+                <tr>
+                  <td>{{clientName}}</td>
+                  <td><span class="label label-primary label-capitalize">{{clientType}}</span></td>
+                  <td>{{company}}</td>
+                  <td>{{address}}</td>
+                  <td>{{phone}}</td>
+                  <td>{{email}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a href="/supports/edit/{{_id}}" class="btn btn-default btn-sm">Edit</a>
+                      <button class="btn btn-danger btn-sm" data-remove="client">Remove</button>
+                    </div>
+                  </td>
+                </tr>
+              {{else}}
+                <tr>
+                  <td colspan="6">No client are registered</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{else}}
+          <p>Loading data...</p>
+        {{/if}}
+
+      </div> <!-- /.col-md-12 -->
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</template>
